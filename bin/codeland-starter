@@ -1,0 +1,5 @@
+#! /usr/bin/ruby
+
+require 'codeland/starter'
+
+Codeland::Starter.create_project(ARGV[0])

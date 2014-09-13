@@ -1,7 +1,14 @@
-require "codeland/starter/version"
+require 'codeland/starter/version'
+require 'codeland/starter/ask'
 
 module Codeland
   module Starter
-    # Your code goes here...
+    class << self
+      attr_reader :name
+
+      def create_project(name)
+        @name = name
+      end
+    end
   end
 end
