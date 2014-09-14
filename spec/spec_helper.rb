@@ -1,6 +1,14 @@
 require 'bundler/setup'
 Bundler.setup
 
+require 'simplecov'
+require 'simplecov-console'
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::Console
+]
+ENV['HEROKU_OAUTH_TOKEN'] ||= 'my_token'
+SimpleCov.start
 require 'webmock/rspec'
 require 'codeland/starter'
 

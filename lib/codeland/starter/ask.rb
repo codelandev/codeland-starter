@@ -4,7 +4,11 @@ module Codeland
       class << self
         def question?(question)
           print "#{question} (Y/N): "
-          !!(gets.chomp =~ /\Ay(es)?/i)
+          !!(STDIN.gets.chomp =~ /\Ay(es)?/i)
+        end
+
+        def heroku?
+          question?('Wants heroku?')
         end
       end
     end
