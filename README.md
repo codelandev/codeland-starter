@@ -1,6 +1,6 @@
 # Codeland::Starter
 
-[![Code Climate](https://codeclimate.com/github/codelandev/codeland-starter/badges/gpa.svg)](https://codeclimate.com/github/codelandev/codeland-starter) [![Build Status](https://travis-ci.org/codelandev/codeland-starter.svg)](https://travis-ci.org/codelandev/codeland-starter)
+[![Code Climate](https://codeclimate.com/github/codelandev/codeland-starter/badges/gpa.svg)](https://codeclimate.com/github/codelandev/codeland-starter) [![Build Status](https://travis-ci.org/codelandev/codeland-starter.svg?branch=master)](https://travis-ci.org/codelandev/codeland-starter) [![Test Coverage](https://codeclimate.com/github/codelandev/codeland-starter/badges/coverage.svg)](https://codeclimate.com/github/codelandev/codeland-starter)
 
 TODO: Write a gem description
 
