@@ -1,5 +1,7 @@
 # Codeland::Starter
 
+[![Code Climate](https://codeclimate.com/github/codelandev/codeland-starter/badges/gpa.svg)](https://codeclimate.com/github/codelandev/codeland-starter) [![Build Status](https://travis-ci.org/codelandev/codeland-starter.svg)](https://travis-ci.org/codelandev/codeland-starter)
+
 TODO: Write a gem description
 
 ## Installation
