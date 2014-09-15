@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.bindir = 'bin'
 
   spec.add_runtime_dependency 'platform-api'
+  spec.add_runtime_dependency 'thor', '~> 0.19'
 
   spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'rake'

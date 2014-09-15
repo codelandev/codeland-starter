@@ -1,5 +1,5 @@
 #! /usr/bin/ruby
 
-require 'codeland/starter'
+require 'codeland/starter/cli'
 
-Codeland::Starter.create_project(ARGV[0])
+Codeland::Starter::CLI.start(ARGV)
