@@ -6,16 +6,46 @@ TODO: Write a gem description
 
 ## Installation
 
-```ssh
+```sh
 $ gem install codeland-starter
 ```
 
 ## Usage
 
-TODO: Setup section
+### Setup
 
-```ssh
-$ codeland-starter ProjectName
+```sh
+$ codeland-starter install # Will create ~/codeland-starter.yml
+$ vi ~/codeland-starter.yml
+```
+
+The `integrations` section in YAML is an array of the services. Eg:
+```yaml
+integrations:
+  - basecamp
+  - github
+  - heroku
+```
+
+### Create projects
+
+```sh
+$ codeland-starter create ProjectName
+```
+
+## Integrations
+
+### Heroku
+
+```sh`
+$ heroku plugins:install git@github.com:heroku/heroku-oauth.git
+$ heroku authorizations:create -d "some text"
+```
+Paste the `Token` in
+
+```yaml
+heroku:
+  oauth_token: PASTE-YOUR-TOKEN-HERE
 ```
 
 ## Contributing
