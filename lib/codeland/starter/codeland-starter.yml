@@ -1,0 +1,5 @@
+integrations:
+  - heroku
+
+heroku:
+  oauth_token: 'YOUR-TOKEN'
