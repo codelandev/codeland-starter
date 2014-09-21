@@ -3,59 +3,46 @@ require 'spec_helper'
 RSpec.describe Codeland::Starter do
   describe '.create_project' do
     let!(:name) { 'app-name' }
+    let!(:installed_yaml) { File.join(File.dirname(__FILE__), '..', '..', 'lib', 'codeland', 'starter', 'codeland-starter.yml') }
 
-    it 'sets @name' do
-      expect(Codeland::Starter::Ask).to receive(:heroku?).and_return(false)
-      subject.create_project(name)
-      expect(subject.name).to eq(name)
-    end
+    context 'name' do
+      before { expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).and_return([]) }
 
-    context 'with heroku' do
-      after { subject.create_project(name) }
-
-      it 'calls .create_heroku' do
-        expect(Codeland::Starter::Ask).to receive(:heroku?).and_return(true)
-        is_expected.to receive(:create_heroku).once
+      it 'sets @name' do
+        subject.create_project(name, installed_yaml)
+        expect(subject.name).to eq(name)
       end
     end
 
-    context 'without heroku' do
-      after { subject.create_project(name) }
+    context 'integrations' do
+      context 'with correct yaml' do
+        context 'empty integrations on yaml' do
+          before { expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).and_return([]) }
 
-      it 'not calls .create_heroku' do
-        expect(Codeland::Starter::Ask).to receive(:heroku?).and_return(false)
-        is_expected.not_to receive(:create_heroku)
-      end
-    end
-  end
+        end
+        context 'with integrations' do
+          after { subject.create_project(name, installed_yaml) }
 
-  describe '.create_heroku' do
-    subject { described_class.create_heroku }
+          context 'defined integrations' do
+            let!(:integration) { 'heroku' }
+            let!(:integration_class) { Codeland::Starter::Integrations::Heroku }
+            before do
+              expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).and_return([integration])
+            end
 
-    context 'Env vars ready' do
-      before do
-        expect(described_class).to receive(:name).and_return('app-name')
+            it 'calls integration.create' do
+              expect_any_instance_of(integration_class).to receive(:create).and_return(nil)
+            end
 
-        expect(Codeland::Starter::Env).to receive(:service_ready?)
-          .with('Heroku').and_return(true)
-      end
-
-      it 'calls heroku.create' do
-        heroku = Codeland::Starter::Services::Heroku
-        expect_any_instance_of(heroku).to receive(:create).once.and_return(nil)
-        subject
-      end
-    end
-
-    context 'missing env vars' do
-      before do
-        env = Codeland::Starter::Env
-        expect(env).to receive(:service_ready?)
-          .with('Heroku').and_raise(env::EnvNotSet.new('Heroku'))
+            it 'calls integration.output' do
+              expect_any_instance_of(integration_class).to receive(:create).and_return({})
+              expect_any_instance_of(integration_class).to receive(:output).and_return(nil)
+            end
+          end
+        end
       end
 
-      it 'exits' do
-        expect{ subject }.to raise_exception(SystemExit)
+      context 'not existing yaml' do
       end
     end
   end

@@ -1,26 +1,25 @@
 require 'codeland/starter/version'
-require 'codeland/starter/ask'
-require 'codeland/starter/services/heroku'
-require 'codeland/starter/env'
+require 'codeland/starter/configuration'
+dirname = File.dirname(__FILE__)
+Dir["#{dirname}/starter/integrations/*.rb"].each do |file|
+  require file
+end
 
 module Codeland
   module Starter
     class << self
-      attr_reader :name
+      attr_reader :name, :config
 
-      def create_project(name)
+      def create_project(name, yaml_file)
         @name = name
-        create_heroku if Ask.heroku?
-      end
-
-      def create_heroku
-        begin
-          Env.service_ready?('Heroku')
-          heroku = Services::Heroku.new(name)
-          heroku.create
-        rescue Env::EnvNotSet => e
-          puts e
-          exit
+        @config = Configuration.new(yaml_file)
+        config.integrations.each do |integration|
+          integration_class_name = integration.capitalize
+          if const_defined?("Integrations::#{integration_class_name}")
+            client = class_eval("Integrations::#{integration_class_name}.new")
+            client.create
+            client.output
+          end
         end
       end
     end
