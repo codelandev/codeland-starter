@@ -15,12 +15,18 @@ module Codeland
         @config = Configuration.new(yaml_file)
         config.integrations.each do |integration|
           integration_class_name = integration.capitalize
-          if const_defined?("Integrations::#{integration_class_name}")
-            client = class_eval("Integrations::#{integration_class_name}.new")
+          if have_integration?(integration_class_name)
+            client = Integrations.const_get(integration_class_name).new
             client.create
             client.output
           end
         end
+      end
+
+      private
+
+      def have_integration?(integration)
+        const_defined?(:Integrations) && Integrations.const_defined?(integration)
       end
     end
   end
