@@ -10,7 +10,7 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
           'Authorization' => "Bearer #{heroku_token}",
           'Content-Type'  => 'application/json',
           'Host'          => 'api.heroku.com:443',
-          'User-Agent'    => 'excon/0.39.5'
+          'User-Agent'    => "excon/#{Excon::VERSION}"
         }
       ).to_return(:status => status, :body => content)
   end
@@ -24,7 +24,7 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
           'Authorization' => "Bearer #{heroku_token}",
           'Content-Type'  => 'application/json',
           'Host'          => 'api.heroku.com:443',
-          'User-Agent'    => 'excon/0.39.5'
+          'User-Agent'    => "excon/#{Excon::VERSION}"
         }
       ).to_raise(error)
   end
