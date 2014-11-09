@@ -17,7 +17,12 @@ module Codeland
                   end
           @app = {}
           @success = false
-          @api  = PlatformAPI.connect_oauth(token)
+          @api = PlatformAPI.connect_oauth(token)
+        end
+
+        def perform
+          create
+          output
         end
 
         def create

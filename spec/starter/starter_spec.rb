@@ -30,13 +30,8 @@ RSpec.describe Codeland::Starter do
               expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).and_return([integration])
             end
 
-            it 'calls integration.create' do
-              expect_any_instance_of(integration_class).to receive(:create).and_return(nil)
-            end
-
-            it 'calls integration.output' do
-              expect_any_instance_of(integration_class).to receive(:create).and_return({})
-              expect_any_instance_of(integration_class).to receive(:output).and_return(nil)
+            it 'calls integration#perform' do
+              expect_any_instance_of(integration_class).to receive(:perform).and_return(nil)
             end
           end
         end

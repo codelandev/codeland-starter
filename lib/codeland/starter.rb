@@ -17,8 +17,7 @@ module Codeland
           integration_class_name = integration.capitalize
           if have_integration?(integration_class_name)
             client = Integrations.const_get(integration_class_name).new
-            client.create
-            client.output
+            client.perform
           end
         end
       end

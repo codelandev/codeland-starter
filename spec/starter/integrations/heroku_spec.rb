@@ -134,4 +134,30 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
       end
     end
   end
+
+  describe '#perform' do
+    before { expect(Codeland::Starter).to receive(:config).exactly(4).times.and_return(Codeland::Starter::Configuration.new(installed_yaml)) }
+
+    context '#create' do
+      before do
+        expect_any_instance_of(Codeland::Starter::Integrations::Heroku).to receive(:create).once
+        expect_any_instance_of(Codeland::Starter::Integrations::Heroku).to receive(:output).once.and_return(nil)
+      end
+
+      it 'calls #create' do
+        subject.perform
+      end
+    end
+
+    context '#output' do
+      before do
+        expect_any_instance_of(Codeland::Starter::Integrations::Heroku).to receive(:create).once.and_return(nil)
+        expect_any_instance_of(Codeland::Starter::Integrations::Heroku).to receive(:output).once
+      end
+
+      it 'calls #output' do
+        subject.perform
+      end
+    end
+  end
 end
