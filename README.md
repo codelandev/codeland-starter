@@ -2,7 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/codelandev/codeland-starter/badges/gpa.svg)](https://codeclimate.com/github/codelandev/codeland-starter) [![Build Status](https://travis-ci.org/codelandev/codeland-starter.svg?branch=master)](https://travis-ci.org/codelandev/codeland-starter) [![Test Coverage](https://codeclimate.com/github/codelandev/codeland-starter/badges/coverage.svg)](https://codeclimate.com/github/codelandev/codeland-starter)
 
-TODO: Write a gem description
+Create [Ruby on Rails](http://rubyonrails.org/) projects based on [Codeland's](http://codeland.com.br) template with [integrations](#integrations).
 
 ## Installation
 
@@ -22,9 +22,8 @@ $ vi ~/codeland-starter.yml
 The `integrations` section in YAML is an array of the services. Eg:
 ```yaml
 integrations:
-  - basecamp
-  - github
   - heroku
+  - another-service
 ```
 
 ### Create projects
