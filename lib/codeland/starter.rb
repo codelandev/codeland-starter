@@ -7,12 +7,30 @@ end
 
 module Codeland
   module Starter
+    ROOT_PATH = File.join(File.dirname(__FILE__), '..', '..')
+
     class << self
       attr_reader :name, :config
 
       def create_project(name, yaml_file)
         @name = name
         @config = Configuration.new(yaml_file)
+        create_rails_project
+        create_integrations
+      end
+
+      def create_rails_project
+        options = [
+          '--database=postgresql',
+          "--template=#{File.join(ROOT_PATH, 'template', 'codeland.rb')}",
+          '--skip-bundle',
+          '--skip-test-unit'
+        ]
+        system("rails new #{name} #{options.join(' ')}")
+        Dir.chdir(name)
+      end
+
+      def create_integrations
         config.integrations.each do |integration|
           integration_class_name = integration.capitalize
           if have_integration?(integration_class_name)

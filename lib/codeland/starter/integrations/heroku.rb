@@ -35,16 +35,21 @@ module Codeland
           rescue Excon::Errors::UnprocessableEntity
             @app = create_random_app
             @success = true
+          ensure
+            add_git_remote
           end
         end
 
         def output
           if success?
-            puts <<-MESSAGE
+            puts <<-MESSAGE.gsub(/^\s{12}/, '')
             Heroku created with
             URL: #{app['web_url']}
             Git remote: #{app['git_url']}
             MESSAGE
+          else
+            puts 'heroku failed'
+            puts app
           end
         end
 
@@ -71,6 +76,10 @@ module Codeland
 
         def missing_config(message)
           raise MissingYAML, message
+        end
+
+        def add_git_remote
+          system("git remote add heroku #{app['git_url']}") if success?
         end
       end
     end

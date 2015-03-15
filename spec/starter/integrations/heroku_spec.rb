@@ -65,7 +65,9 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
   end
 
   describe '#create' do
-    before { expect(Codeland::Starter).to receive(:name).and_return(name) }
+    before do
+      expect(Codeland::Starter).to receive(:name).and_return(name)
+    end
 
     subject { described_class.new.create }
 
@@ -74,6 +76,7 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
       before { stub_heroku_error(Excon::Errors::Unauthorized) }
       before { expect(Codeland::Starter).to receive(:config).and_return(Codeland::Starter::Configuration.new(installed_yaml)) }
       before { expect(Codeland::Starter::Configuration).to receive(:[]).with('heroku').exactly(2).times.and_return({'oauth_token' => heroku_token}) }
+      before { allow_any_instance_of(described_class).to receive(:add_git_remote).and_return(nil) }
 
       it 'raises MissingYAML' do
         expect{ subject }.to raise_error(Codeland::Starter::MissingYAML)
@@ -90,9 +93,8 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
         stub_heroku(heroku_file, 201, nil)
         is_expected.to receive(:create_app).with(name).once.and_raise(error)
         is_expected.to receive(:create_app).with(no_args).once
+        allow_any_instance_of(described_class).to receive(:add_git_remote).and_return(nil)
       end
-
-
 
       it 'calls create with empty name' do
         subject.create
@@ -109,11 +111,23 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
 
       context 'returned json have some keys' do
         before { subject.create }
+        before { allow_any_instance_of(described_class).to receive(:add_git_remote).and_return(nil) }
 
         %w(git_url id name web_url).each do |key|
           it "includes #{key} key" do
             expect(JSON.parse(subject.app)).to have_key('id')
           end
+        end
+      end
+
+      context 'git remote' do
+        before do
+          expected = "git remote add heroku git_url"
+          expect(subject).to receive(:system).with(expected).once
+        end
+
+        it 'calls git remote add heroku' do
+          subject.create
         end
       end
     end
