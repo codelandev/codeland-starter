@@ -31,7 +31,7 @@ module Codeland
       end
 
       def create_integrations
-        config.integrations.each do |integration|
+        config.integrations && config.integrations.each do |integration|
           integration_class_name = integration.capitalize
           if have_integration?(integration_class_name)
             client = Integrations.const_get(integration_class_name).new

@@ -9,7 +9,7 @@ RSpec.describe Codeland::Starter do
     let!(:installed_yaml) { File.join(File.dirname(__FILE__), '..', '..', 'lib', 'codeland', 'starter', 'codeland-starter.yml') }
 
     context 'name' do
-      before { expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).and_return([]) }
+      before { expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).exactly(2).times.and_return([]) }
 
       it 'sets @name' do
         subject.create_project(name, installed_yaml)
@@ -30,7 +30,7 @@ RSpec.describe Codeland::Starter do
             let!(:integration) { 'heroku' }
             let!(:integration_class) { Codeland::Starter::Integrations::Heroku }
             before do
-              expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).and_return([integration])
+              expect_any_instance_of(Codeland::Starter::Configuration).to receive(:integrations).exactly(2).times.and_return([integration])
             end
 
             it 'calls integration#perform' do
