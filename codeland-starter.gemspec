@@ -6,9 +6,9 @@ require 'codeland/starter/version'
 Gem::Specification.new do |spec|
   spec.name          = 'codeland-starter'
   spec.version       = Codeland::Starter::VERSION
-  spec.authors       = ['Sérgio Schnorr Júnior']
-  spec.email         = %w(jr.schnorr@gmail.com)
-  spec.summary       = 'Codeland starter. To create services in just one time'
+  spec.authors       = ['Sérgio Schnorr Júnior', 'Codeland']
+  spec.email         = %w(jr.schnorr@gmail.com contato@codeland.com.br)
+  spec.summary       = 'To create Rails projects with template and integrations'
   spec.homepage      = 'https://github.com/codelandev/codeland-starter'
   spec.license       = 'MIT'
 
