@@ -32,6 +32,37 @@ integrations:
 $ codeland-starter create ProjectName
 ```
 
+## What do you (can) get?
+
+- PostgreSQL
+- Ruby version in Gemfile
+- [Slim](http://slim-lang.com/)
+- Skip Rails generators (javascripts, stylesheets, helpers)
+- Brazilian time and locale
+- Front-end setup
+- [Heroku](https://www.heroku.com/) setup
+- Gems:
+  - [RSpec](http://rspec.info/)
+  - [Machinist](https://github.com/notahat/machinist)
+  - [Simplecov](https://github.com/colszowka/simplecov)
+  - [Database cleaner](https://github.com/DatabaseCleaner/database_cleaner)
+  - [Shoulda matchers](https://github.com/thoughtbot/shoulda-matchers)
+  - [Cabybara](http://jnicklas.github.io/capybara/)
+  - [Selenium](https://rubygems.org/gems/selenium-webdriver)
+  - [Initjs](https://github.com/josemarluedke/initjs)
+  - [Rails-i18n](https://github.com/svenfuchs/rails-i18n)
+  - [Devise](https://github.com/plataformatec/devise)
+  - [ActiveAdmin](https://github.com/gregbell/active_admin)
+  - [Simpleform](https://github.com/plataformatec/simple_form)
+  - [Pundit](https://github.com/elabs/pundit)
+  - [Autoprefixer-rails](https://github.com/ai/autoprefixer-rails)
+  - [Bootstrap](https://github.com/twbs/bootstrap-sass)
+  - [Font-awesome](https://github.com/bokmann/font-awesome-rails)
+  - [NProgress](https://github.com/caarlos0/nprogress-rails)
+  - [Rails 12factor](https://github.com/heroku/rails_12factor)
+  - [Thin](http://code.macournoyer.com/thin/) (development)
+  - [Passenger](https://www.phusionpassenger.com/) (production)
+
 ## Integrations
 
 ### Heroku
