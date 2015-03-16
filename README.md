@@ -71,7 +71,7 @@ $ codeland-starter create ProjectName
 $ heroku plugins:install git@github.com:heroku/heroku-oauth.git
 $ heroku authorizations:create -d "some text"
 ```
-Paste the `Token` in
+Paste the `Token` in `codeland-starter.yml`
 
 ```yaml
 heroku:
