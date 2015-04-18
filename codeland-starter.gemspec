@@ -28,6 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 1.20.3'
   spec.add_development_dependency 'simplecov', '~> 0.9.1'
   spec.add_development_dependency 'simplecov-console'
-  spec.add_development_dependency 'pry'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.1'
 end
