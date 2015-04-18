@@ -36,7 +36,10 @@ module Codeland
             @app = create_random_app
             @success = true
           ensure
-            add_git_remote
+            if success?
+              add_git_remote
+              add_collaborators
+            end
           end
         end
 
@@ -79,7 +82,21 @@ module Codeland
         end
 
         def add_git_remote
-          system("git remote add heroku #{app['git_url']}") if success?
+          system("git remote add heroku #{app['git_url']}")
+        end
+
+        def add_collaborators
+          users = Configuration['heroku']['users']
+          if users && users.is_a?(Array)
+            users.each do |user|
+              begin
+                api.collaborator.create(app['id'], { :user => user })
+                puts "Collaborator #{user} was added"
+              rescue Excon::Errors::UnprocessableEntity
+                puts "Collaborator #{user} was not added"
+              end
+            end
+          end
         end
       end
     end

@@ -1,0 +1,1 @@
+[{"created_at"=>"2014-07-12T23:04:58Z", "id"=>"some-valid-id", "updated_at"=>"2014-07-12T23:04:58Z", "user"=>{"id"=>"some-user-id-here", "email"=>"my@email.com"}, "role"=>"owner"}]

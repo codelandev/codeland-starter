@@ -3,3 +3,5 @@ integrations:
 
 heroku:
   oauth_token: 'YOUR-TOKEN'
+  users:
+    - my@example.com

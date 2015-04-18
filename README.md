@@ -81,6 +81,17 @@ heroku:
   oauth_token: PASTE-YOUR-TOKEN-HERE
 ```
 
+#### Collaborators
+
+Has a team? List them as an array in `codeland-starter.yml`
+```yaml
+heroku:
+  users:
+    - contato@codeland.com.br
+    - another@email.com
+    - email@example.com
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/codelandev/codeland-starter/fork )
