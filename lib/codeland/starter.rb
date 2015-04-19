@@ -10,7 +10,11 @@ module Codeland
     ROOT_PATH = File.join(File.dirname(__FILE__), '..', '..')
 
     class << self
-      attr_reader :name, :config
+      attr_reader :name
+
+      def config
+        @config ||= Configuration.new
+      end
 
       def create_project(name, yaml_file)
         @name = name

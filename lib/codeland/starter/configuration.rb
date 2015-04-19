@@ -8,8 +8,8 @@ module Codeland
 
       DEFAULT_FILENAME = 'codeland-starter.yml'
 
-      def initialize(yaml_file)
-        @yaml = if File.exists?(yaml_file)
+      def initialize(yaml_file = nil)
+        @yaml = if yaml_file && File.exists?(yaml_file)
                   YAML.load_file(File.open(yaml_file))
                 elsif File.exists?(default_yaml_file)
                   YAML.load_file(File.open(default_yaml_file))
