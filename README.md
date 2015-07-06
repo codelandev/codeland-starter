@@ -44,7 +44,7 @@ $ codeland-starter create ProjectName
 - [Heroku](https://www.heroku.com/) setup
 - Gems:
   - [RSpec](http://rspec.info/)
-  - [Machinist](https://github.com/notahat/machinist)
+  - [Factory girl](https://github.com/thoughtbot/factory_girl_rails)
   - [Simplecov](https://github.com/colszowka/simplecov)
   - [Database cleaner](https://github.com/DatabaseCleaner/database_cleaner)
   - [Shoulda matchers](https://github.com/thoughtbot/shoulda-matchers)
@@ -60,8 +60,10 @@ $ codeland-starter create ProjectName
   - [Bootstrap](https://github.com/twbs/bootstrap-sass)
   - [Font-awesome](https://github.com/bokmann/font-awesome-rails)
   - [NProgress](https://github.com/caarlos0/nprogress-rails)
+  - [Draper](https://github.com/drapergem/draper)
   - [Rails 12factor](https://github.com/heroku/rails_12factor)
   - [Thin](http://code.macournoyer.com/thin/) (development)
+  - [Rack Profiler](https://github.com/MiniProfiler/rack-mini-profiler) (development)
   - [Passenger](https://www.phusionpassenger.com/) (production)
 
 ## Integrations

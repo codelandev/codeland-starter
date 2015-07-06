@@ -24,11 +24,16 @@ else
   puts 'Please upgrade to ruby 2.2 or more'
 end
 
+gem_group :development do
+  gem 'rack-mini-profiler'
+  gem 'letter_opener'
+end
+
 gem_group :development, :test do
   unless rails_4?
     gem 'pry-rails', '~> 0.3.4'
   end
-  gem 'machinist', '~> 2.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'rspec-rails', '~> 3.3.3'
   gem 'awesome_print', '~> 1.6.1', :require => false
   gem 'spring-commands-rspec', '~> 1.0.4'
@@ -44,7 +49,6 @@ gem_group :test do
 end
 run 'bundle install --quiet'
 run 'bundle exec spring binstub rspec'
-generate :'machinist:install'
 generate :'rspec:install'
 inside 'spec' do
   insert_into_file 'rails_helper.rb', "\nrequire 'shoulda-matchers'", :after => "require 'rspec/rails'"
@@ -85,7 +89,7 @@ config.generators do |g|
       g.test_framework :rspec,
         view_specs: false,
         helper_specs: false
-      g.fixtures_replacement :machinist
+      g.factory_girl: true
     end
 CONFIG
 git :add => '.'
@@ -122,6 +126,7 @@ git :commit => %Q{ -m 'Install Rails-i18n' --quiet }
 gem 'slim-rails', '~> 3.0.1'
 run 'bundle install --quiet'
 application %Q(config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }), :env => 'development'
+application  'config.action_mailer.delivery_method = :letter_opener', :env => 'development'
 application  'Slim::Engine.set_options pretty: true', :env => 'development'
 git :add => '.'
 git :commit => %Q{ -m 'Install Slim-rails' --quiet }
@@ -183,6 +188,7 @@ end
 gem 'autoprefixer-rails', '~> 5.2.1'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-rails', '~> 4.4.0'
+gem 'draper', '~> 1.3'
 run 'bundle install --quiet'
 
 inside 'app' do
@@ -197,8 +203,18 @@ inside 'app' do
     end
   end
 
+  empty_directory 'decorators' do
+    create_file '.keep'
+  end
+
   inside 'views' do
     directory 'partials'
+  end
+end
+
+inside 'spec' do
+  empty_directory 'decorators' do
+    create_file '.keep'
   end
 end
 
