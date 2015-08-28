@@ -26,17 +26,17 @@ end
 
 gem_group :development, :test do
   unless rails_4?
-    gem 'pry-rails', '~> 0.3.2'
+    gem 'pry-rails', '~> 0.3.4'
   end
   gem 'machinist', '~> 2.0'
-  gem 'rspec-rails', '~> 3.2.0'
+  gem 'rspec-rails', '~> 3.3.3'
   gem 'awesome_print', '~> 1.6.1', :require => false
   gem 'spring-commands-rspec', '~> 1.0.4'
   gem 'thin', '~> 1.6.3'
 end
 
 gem_group :test do
-  gem 'simplecov', '~> 0.9.2', :require => false
+  gem 'simplecov', '~> 0.10.0', :require => false
   gem 'database_cleaner', '~> 1.4.1'
   gem 'shoulda-matchers', '~> 2.8.0', :require => false
   gem 'capybara'
@@ -127,8 +127,8 @@ git :add => '.'
 git :commit => %Q{ -m 'Install Slim-rails' --quiet }
 
 if yes?('Install Devise?')
-  gem 'devise', '~> 3.4.1'
-  gem 'devise-i18n'
+  gem 'devise', '~> 3.5.2'
+  gem 'devise-i18n', '~> 0.12.1'
   run 'bundle install --quiet'
   generate :'devise:install'
   git :add => '.'
@@ -136,7 +136,7 @@ if yes?('Install Devise?')
 end
 
 if yes?('Install ActiveAdmin?')
-  gem 'activeadmin', :github => 'gregbell/active_admin'
+  gem 'activeadmin', :github => 'activeadmin'
   run 'bundle install --quiet'
   generate :'active_admin:install'
   git :add => '.'
@@ -153,7 +153,7 @@ if yes?('Install Simpleform?')
 end
 
 if yes?('Install Pundit?')
-  gem 'pundit', '~> 0.3.0'
+  gem 'pundit', '~> 1.0.1'
   run 'bundle install --quiet'
   generate :'pundit:install'
   inside 'app' do
@@ -177,9 +177,9 @@ end
 
 # Front-end stuffs
 
-gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.3.3'
-gem 'font-awesome-rails'
+gem 'autoprefixer-rails', '~> 5.2.1'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'font-awesome-rails', '~> 4.4.0'
 run 'bundle install --quiet'
 
 inside 'app' do
@@ -200,7 +200,7 @@ inside 'app' do
 end
 
 if yes?('Install NProgress?')
-  gem 'nprogress-rails'
+  gem 'nprogress-rails', '~> 0.1.6'
   run 'bundle install --quiet'
   inside 'app' do
     inside 'assets' do
