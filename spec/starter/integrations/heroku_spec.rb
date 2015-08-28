@@ -4,7 +4,7 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
   def stub_heroku(content = nil, status = 201, app_name = name)
     stub_request(:post, 'https://api.heroku.com/apps')
       .with(
-        :body    => { :name => name, :region => 'us', :stack => 'cedar' },
+        :body    => { :name => name, :region => 'us', :stack => 'cedar-14' },
         :headers => {
           'Accept'        => 'application/vnd.heroku+json; version=3',
           'Authorization' => "Bearer #{heroku_token}",
@@ -18,7 +18,7 @@ RSpec.describe Codeland::Starter::Integrations::Heroku do
   def stub_heroku_error(error, app_name = name)
     stub_request(:post, 'https://api.heroku.com/apps')
       .with(
-        :body    => { :name => app_name, :region => 'us', :stack => 'cedar' },
+        :body    => { :name => app_name, :region => 'us', :stack => 'cedar-14' },
         :headers => {
           'Accept'        => 'application/vnd.heroku+json; version=3',
           'Authorization' => "Bearer #{heroku_token}",
