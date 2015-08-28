@@ -171,6 +171,9 @@ if yes?('Install Pundit?')
 ', :after => "protect_from_forgery with: :exception\n"
     end
   end
+  inside 'spec' do
+    insert_into_file 'rails_helper.rb', "\nrequire 'pundit/rspec'", :after => "require 'shoulda-matchers'"
+  end
   git :add => '.'
   git :commit => %Q{ -m 'Install Pundit' --quiet }
 end
