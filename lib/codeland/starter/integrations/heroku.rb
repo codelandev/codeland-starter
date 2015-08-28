@@ -66,7 +66,7 @@ module Codeland
           api.app.create({
             :name   => app_name,
             :region => 'us',
-            :stack  => 'cedar'
+            :stack  => 'cedar-14'
           })
         end
 
