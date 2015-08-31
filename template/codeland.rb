@@ -89,7 +89,7 @@ config.generators do |g|
       g.test_framework :rspec,
         view_specs: false,
         helper_specs: false
-      g.factory_girl: true
+      g.factory_girl true
     end
 CONFIG
 git :add => '.'
