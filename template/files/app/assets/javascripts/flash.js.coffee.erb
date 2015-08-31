@@ -7,5 +7,5 @@
       setTimeout( ->
         $('.flash').slideUp()
       , 5000)
-    $(document).click ->
+    $(document).one 'click', ->
       $('.flash').slideUp()
