@@ -14,7 +14,7 @@ git :add => '.'
 git :commit => %Q{ -m 'Initial commit' --quiet }
 
 # Ruby and Rails check
-if Gem::Version.new(RUBY_VERSION) > Gem::Version.new('2.0')
+if Gem::Version.new(RUBY_VERSION) > Gem::Version.new('2.2')
   if yes?("You are using #{RUBY_VERSION}. Is the version of the project?")
     insert_into_file 'Gemfile', "ruby '#{RUBY_VERSION}'\n", :after => "source 'https://rubygems.org'\n\n"
   end
