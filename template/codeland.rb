@@ -38,7 +38,7 @@ gem_group :development, :test do
   gem 'awesome_print', '~> 1.6.1', :require => false
   gem 'spring-commands-rspec', '~> 1.0.4'
   gem 'thin', '~> 1.6.3'
-  gem 'dotenv-rails', '~ 2.0.2'
+  gem 'dotenv-rails', '~> 2.0.2'
 end
 
 create_file '.env'
