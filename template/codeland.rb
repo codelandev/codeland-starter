@@ -279,6 +279,7 @@ gem_group :production do
 end
 run 'bundle install --quiet'
 copy_file 'Procfile'
+copy_file '.slugignore'
 git :add => '.'
 git :commit => %Q{ -m 'Heroku setup' --quiet }
 
