@@ -13,7 +13,7 @@ html
 
   body
     = initjs_tag "<%= @app_const_base %>"
-    = render 'flash' if flash.any?
+    = render 'layouts/flash' if flash.any?
     = render 'partials/header'
     = yield
     = render 'partials/footer'
