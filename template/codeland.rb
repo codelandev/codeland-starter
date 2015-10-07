@@ -59,8 +59,7 @@ inside 'spec' do
   insert_into_file 'rails_helper.rb', "\nrequire 'shoulda-matchers'", :after => "require 'rspec/rails'"
   insert_into_file 'rails_helper.rb', "\nrequire 'capybara/rspec'", :after => "require 'rspec/rails'"
   insert_into_file 'rails_helper.rb', "\nrequire 'capybara/rails'", :after => "require 'rspec/rails'"
-  insert_into_file 'rails_helper.rb', "\nrequire Rails.root.join('spec', 'support', 'blueprints.rb')
-
+  insert_into_file 'rails_helper.rb', "\n
 Capybara.javascript_driver = :selenium
 Capybara.server_port = 52662
 Capybara.exact = true\n", :after => "require 'shoulda-matchers'"
